@@ -1,39 +1,42 @@
 extends Node2D
 
 var _components: Array[Component] = [];
+var _coord_to_components: Dictionary[Vector2i, Component] = {};
 var _ouputs: Dictionary[Vector2i, Array] = {};
 
-const CompConduit = preload("res://components/conduit.gd");
-const CompInput = preload("res://components/input.gd");
-const CompOutput = preload("res://components/output.gd");
+
+
+func click_at(coords : Vector2i) -> void:
+	print(coords);
+	for c in _components:
+		if c.get_position() == coords:
+			c._clicked();
 
 
 
+func place_component(component : Component):
+	if has_component_at(component.get_position()):
+		remove_component_at(component.get_position());
 
-
-func _ready() -> void:
-	_add_component(CompInput.new(Vector2i(0,0)));
-	_add_component(CompConduit.new(Vector2i(1,0)));
-	_add_component(CompConduit.new(Vector2i(2,0)));
-	_add_component(CompConduit.new(Vector2i(3,0)));
-	_add_component(CompConduit.new(Vector2i(4,0)));
-	_add_component(CompOutput.new(Vector2i(5,0)));
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("click"):
-		var mouse_position = get_global_mouse_position();
-		var coords = %Circuit.local_to_map(mouse_position);
-		print(coords);
-		for c in _components:
-			if c.get_position() == coords:
-				c._clicked();
-
-
-func _add_component(component : Component):
 	_components.push_back(component);
 	component.output.connect(_on_component_output);
 	component.tile_updated.connect(_on_component_tile_updated);
 	component._placed();
+	_coord_to_components[component.get_position()] = component;
+
+
+
+func remove_component_at(coord : Vector2i):
+	if _coord_to_components.has(coord):
+		var component = _coord_to_components[coord];
+		component._removed();
+		_components.erase(component);
+		_coord_to_components.erase(coord);
+	
+
+
+func has_component_at(coord : Vector2i):
+	return _coord_to_components.has(coord);
 
 
 
@@ -44,15 +47,11 @@ func _on_component_output(from : Vector2i, to : Vector2i):
 
 
 func _on_component_tile_updated(tile_coords : Vector2i, atlas_coords : Vector2i):
-	%Circuit.set_cell(tile_coords, 0, atlas_coords, 0);
+	%Tiles.set_cell(tile_coords, 0, atlas_coords, 0);
 
 
 
 func _tick() -> void:
-	print("TICK");
-	print(_ouputs);
-	
-	
 	var _input = _ouputs;
 	for c in _components:
 		var default : Array[Vector2i] = [];

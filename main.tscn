@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwwfiqrljphj7"]
+
+[ext_resource type="Script" uid="uid://jagjhckhyvf1" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b171uyg1ud17n" path="res://circuit.tscn" id="2_0xm2m"]
+
+[sub_resource type="TileSet" id="TileSet_0xm2m"]
+tile_size = Vector2i(32, 32)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+
+[node name="Grid" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_0xm2m")
+
+[node name="Circuit" parent="." instance=ExtResource("2_0xm2m")]
+unique_name_in_owner = true

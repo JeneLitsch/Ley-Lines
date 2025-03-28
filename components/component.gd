@@ -12,6 +12,9 @@ func _init(position : Vector2i) -> void:
 func _placed() -> void:
 	pass;
 
+func _removed() -> void:
+	tile_updated.emit(_position, Vector2i(-1,-1));
+
 func _clicked() -> void:
 	pass;
 
