@@ -42,7 +42,7 @@ func has_component_at(coord : Vector2i):
 
 func _on_component_output(from : Vector2i, to : Vector2i):
 	var default : Array[Vector2i] = [];
-	_ouputs.get_or_add(to, default).push_back(from);
+	_ouputs.get_or_add(to, default).push_back(from - to);
 
 
 

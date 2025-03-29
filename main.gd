@@ -3,6 +3,7 @@ extends Node2D;
 const CompConduit = preload("res://components/conduit.gd");
 const CompInput = preload("res://components/input.gd");
 const CompOutput = preload("res://components/output.gd");
+const CompSplitter = preload("res://components/splitter.gd");
 
 
 var _edit_mode : bool = false;
@@ -56,6 +57,9 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("debug_3"):
 		_selected_component = CompOutput;
+
+	if event.is_action_pressed("debug_4"):
+		_selected_component = CompSplitter;
 
 	if event.is_action_pressed("rotate_l"):
 		_place_rotation = (_place_rotation + 3) % 4;

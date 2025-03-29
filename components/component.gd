@@ -50,10 +50,30 @@ func get_position() -> Vector2i:
 
 
 
-func get_forward() -> Vector2i:
-	match _rotation:
+static func rotation_to_direction(rotation : int) -> Vector2i:
+	match rotation % 4:
 		0: return Vector2i.UP;
 		1: return Vector2i.RIGHT;
 		2: return Vector2i.DOWN;
 		3: return Vector2i.LEFT;
 	return Vector2i.UP;
+
+
+
+func get_forward() -> Vector2i:
+	return rotation_to_direction(_rotation + 0);
+
+
+
+func get_backward() -> Vector2i:
+	return rotation_to_direction(_rotation + 2);
+
+
+
+func get_right() -> Vector2i:
+	return rotation_to_direction(_rotation + 1);
+
+
+
+func get_left() -> Vector2i:
+	return rotation_to_direction(_rotation + 3);
