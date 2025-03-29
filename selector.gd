@@ -6,6 +6,8 @@ const CompConduit = preload("res://components/conduit.gd");
 const CompSource = preload("res://components/source.gd");
 const CompSink = preload("res://components/sink.gd");
 const CompSplitter = preload("res://components/splitter.gd");
+const CompSequencer = preload("res://components/sequencer.gd");
+
 const CompLogicAnd = preload("res://components/logic_and.gd");
 const CompLogicOr = preload("res://components/logic_or.gd");
 const CompLogicXor = preload("res://components/logic_xor.gd");
@@ -51,3 +53,7 @@ func _on_xor_pressed() -> void:
 
 func _on_not_pressed() -> void:
 	component_selected.emit(CompLogicNot);
+
+
+func _on_sequencer_pressed() -> void:
+	component_selected.emit(CompSequencer);

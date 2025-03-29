@@ -47,6 +47,10 @@ text = "Sink"
 layout_mode = 2
 text = "Splitter"
 
+[node name="Sequencer" type="Button" parent="MarginContainer/VBoxContainer/Basic"]
+layout_mode = 2
+text = "Sequencer"
+
 [node name="LogicGates" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -71,6 +75,7 @@ text = "Not"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Source" to="." method="_on_source_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Sink" to="." method="_on_sink_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Splitter" to="." method="_on_splitter_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Sequencer" to="." method="_on_sequencer_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LogicGates/And" to="." method="_on_and_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LogicGates/Or" to="." method="_on_or_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LogicGates/Xor" to="." method="_on_xor_pressed"]
