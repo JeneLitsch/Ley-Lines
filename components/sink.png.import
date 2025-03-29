@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8kdcoccfgvyy"
-path="res://.godot/imported/output.png-f20776810f3aeaebde263b72ffa307a8.ctex"
+path="res://.godot/imported/sink.png-3a5b58f54e42d94c21b0ffefac21ec5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://components/output.png"
-dest_files=["res://.godot/imported/output.png-f20776810f3aeaebde263b72ffa307a8.ctex"]
+source_file="res://components/sink.png"
+dest_files=["res://.godot/imported/sink.png-3a5b58f54e42d94c21b0ffefac21ec5b.ctex"]
 
 [params]
 
