@@ -8,6 +8,7 @@ const CompSink = preload("res://components/sink.gd");
 const CompSplitter = preload("res://components/splitter.gd");
 const CompLogicAnd = preload("res://components/logic_and.gd");
 const CompLogicOr = preload("res://components/logic_or.gd");
+const CompLogicXor = preload("res://components/logic_xor.gd");
 
 
 
@@ -41,3 +42,7 @@ func _on_and_pressed() -> void:
 
 func _on_or_pressed() -> void:
 	component_selected.emit(CompLogicOr);
+
+
+func _on_xor_pressed() -> void:
+	component_selected.emit(CompLogicXor);

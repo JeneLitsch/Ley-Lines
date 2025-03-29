@@ -58,6 +58,10 @@ text = "And"
 layout_mode = 2
 text = "Or"
 
+[node name="Xor" type="Button" parent="MarginContainer/VBoxContainer/LogicGates"]
+layout_mode = 2
+text = "Xor"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Tools/Interact" to="." method="_on_interact_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Conduit" to="." method="_on_conduit_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Source" to="." method="_on_source_pressed"]
@@ -65,3 +69,4 @@ text = "Or"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Splitter" to="." method="_on_splitter_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LogicGates/And" to="." method="_on_and_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LogicGates/Or" to="." method="_on_or_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LogicGates/Xor" to="." method="_on_xor_pressed"]

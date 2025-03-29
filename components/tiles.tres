@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://331dr4w051lj"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://331dr4w051lj"]
 
 [ext_resource type="Texture2D" uid="uid://bua7lhoweyj68" path="res://components/conduit.png" id="1_xugr3"]
 [ext_resource type="Texture2D" uid="uid://bfwf4jg433ft6" path="res://components/source.png" id="2_xfjco"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dvu2iu62abhyj" path="res://components/splitter.png" id="4_xfjco"]
 [ext_resource type="Texture2D" uid="uid://dnrwvr61dld21" path="res://components/logic_and.png" id="5_cha7c"]
 [ext_resource type="Texture2D" uid="uid://dtifrnd5btv2m" path="res://components/logic_or.png" id="6_qxsl3"]
+[ext_resource type="Texture2D" uid="uid://bw37147p2rx25" path="res://components/logic_xor.png" id="7_qxsl3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5khbx"]
 texture = ExtResource("1_xugr3")
@@ -67,6 +68,18 @@ texture_region_size = Vector2i(32, 32)
 0:3/0 = 0
 1:3/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u2ap4"]
+texture = ExtResource("7_qxsl3")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_5khbx")
@@ -75,3 +88,4 @@ sources/2 = SubResource("TileSetAtlasSource_7tnmp")
 sources/3 = SubResource("TileSetAtlasSource_61koo")
 sources/4 = SubResource("TileSetAtlasSource_1r8p5")
 sources/5 = SubResource("TileSetAtlasSource_stkxs")
+sources/6 = SubResource("TileSetAtlasSource_u2ap4")
