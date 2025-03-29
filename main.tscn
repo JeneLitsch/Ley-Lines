@@ -42,3 +42,4 @@ tile_set = SubResource("TileSet_lquwl")
 unique_name_in_owner = true
 
 [connection signal="component_selected" from="Selector" to="." method="_on_component_selected"]
+[connection signal="simulation_speed_changed" from="Selector" to="." method="_on_selector_simulation_speed_changed"]

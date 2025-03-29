@@ -51,7 +51,7 @@ func _on_component_tile_updated(tile_coords : Vector2i, source_id : int, atlas_c
 
 
 
-func _tick() -> void:
+func tick() -> void:
 	var _input = _ouputs;
 	for c in _components:
 		var default : Array[Vector2i] = [];

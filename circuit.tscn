@@ -9,9 +9,3 @@ script = ExtResource("1_4jjiq")
 [node name="Tiles" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 tile_set = ExtResource("2_4jjiq")
-
-[node name="Tick" type="Timer" parent="."]
-wait_time = 0.25
-autostart = true
-
-[connection signal="timeout" from="Tick" to="." method="_tick"]

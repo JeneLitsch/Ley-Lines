@@ -16,7 +16,12 @@ const CompLogicNot = preload("res://components/logic_not.gd");
 
 
 signal component_selected(component : Script);
+signal simulation_speed_changed(speed : float);
 
+
+func _ready() -> void:
+	_on_slider_value_changed(%SimulationSpeed/Slider.value)
+	
 
 
 func _on_interact_pressed() -> void:
@@ -57,3 +62,10 @@ func _on_not_pressed() -> void:
 
 func _on_sequencer_pressed() -> void:
 	component_selected.emit(CompSequencer);
+
+
+
+func _on_slider_value_changed(value: float) -> void:
+	var speed = pow(2, value);
+	%SimulationSpeed/Value.text = "%sx" % speed;
+	simulation_speed_changed.emit(speed);

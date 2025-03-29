@@ -12,14 +12,22 @@ var _edit_mode : bool = false;
 var _selected_component : Script = null;
 var _place_rotation : int = 0;
 var _place_position : Vector2i = Vector2i.ZERO;
-
-
+var _time_accumulator : float = 0;
+var _simulation_speed = 1.0;
 
 
 
 func _update_cursor():
 	%Cursor.clear();
 	%Cursor.set_cell(_place_position, 0, Vector2i(0, _place_rotation), 0);
+
+
+
+func _physics_process(delta: float) -> void:
+	_time_accumulator += delta * 16.0 * _simulation_speed;
+	while _time_accumulator >= 1.0:
+		_time_accumulator -= 1.0;
+		%Circuit.tick();
 
 
 
@@ -57,3 +65,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_component_selected(component: Script) -> void:
 	_selected_component = component
+
+
+func _on_selector_simulation_speed_changed(speed: float) -> void:
+	_simulation_speed = speed;
