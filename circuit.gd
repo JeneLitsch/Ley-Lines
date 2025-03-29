@@ -46,8 +46,8 @@ func _on_component_output(from : Vector2i, to : Vector2i):
 
 
 
-func _on_component_tile_updated(tile_coords : Vector2i, atlas_coords : Vector2i):
-	%Tiles.set_cell(tile_coords, 0, atlas_coords, 0);
+func _on_component_tile_updated(tile_coords : Vector2i, source_id : int, atlas_coords : Vector2i):
+	%Tiles.set_cell(tile_coords, source_id, atlas_coords, 0);
 
 
 

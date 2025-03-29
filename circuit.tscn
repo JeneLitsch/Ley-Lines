@@ -1,21 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b171uyg1ud17n"]
+[gd_scene load_steps=3 format=3 uid="uid://b171uyg1ud17n"]
 
 [ext_resource type="Script" uid="uid://b15aqiryqu0ch" path="res://circuit.gd" id="1_4jjiq"]
-[ext_resource type="Texture2D" uid="uid://c7c6bea08ko1t" path="res://circuit.png" id="2_5khbx"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
-texture = ExtResource("2_5khbx")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-1:2/0 = 0
-0:2/0 = 0
-1:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_h2yge"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_0xm2m")
+[ext_resource type="TileSet" uid="uid://331dr4w051lj" path="res://components/tiles.tres" id="2_4jjiq"]
 
 [node name="Circuit" type="Node2D"]
 script = ExtResource("1_4jjiq")
@@ -25,7 +11,7 @@ script = ExtResource("1_4jjiq")
 [node name="Tiles" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_h2yge")
+tile_set = ExtResource("2_4jjiq")
 
 [node name="Tick" type="Timer" parent="."]
 wait_time = 0.25

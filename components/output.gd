@@ -4,7 +4,7 @@ var _input : bool = false;
 
 
 func _placed() -> void:
-	tile_updated.emit(_position, Vector2i(int(_input), 2));
+	_update_tile();
 
 
 
@@ -16,10 +16,14 @@ func _tick_input(input : Array[Vector2i]) -> void:
 func _tick_process() -> void:
 	if _input:
 		print("on");
-	tile_updated.emit(_position, Vector2i(int(_input), 2));
+	_update_tile();
 	_input = false;
 
 
 
 func _tick_output() -> void:
 	pass;
+
+
+func _update_tile():
+	tile_updated.emit(_position, 2, Vector2i(int(_input), 0));

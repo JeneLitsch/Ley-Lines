@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7c6bea08ko1t"
-path="res://.godot/imported/circuit.png-316b9ca93309c8d78f5670ffcfc38fda.ctex"
+uid="uid://bua7lhoweyj68"
+path="res://.godot/imported/conduit.png-b860492b9a8a5d4e8213a11840774664.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://circuit.png"
-dest_files=["res://.godot/imported/circuit.png-316b9ca93309c8d78f5670ffcfc38fda.ctex"]
+source_file="res://components/conduit.png"
+dest_files=["res://.godot/imported/conduit.png-b860492b9a8a5d4e8213a11840774664.ctex"]
 
 [params]
 
