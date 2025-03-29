@@ -2,22 +2,22 @@ extends Component;
 
 var _input : bool;
 
-func _placed() -> void:
+func placed() -> void:
 	_update_tile();
 
 
 
-func _tick_input(input : Array[Vector2i]) -> void:
+func tick_input(input : Array[Vector2i]) -> void:
 	_input = not input.is_empty();
 	
 	
 	
-func _tick_process() -> void:
+func tick_process() -> void:
 	_update_tile();
 	
 	
 	
-func _tick_output() -> void:
+func tick_output() -> void:
 	if _input:
 		output.emit(_position, _position + get_forward());
 	_input = false;

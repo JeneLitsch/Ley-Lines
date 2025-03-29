@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://b171uyg1ud17n" path="res://circuit.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://31dcln13fm4w" path="res://cursor.png" id="2_h2yge"]
 
+[sub_resource type="TileSet" id="TileSet_0xm2m"]
+tile_size = Vector2i(32, 32)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("2_h2yge")
 texture_region_size = Vector2i(32, 32)
@@ -16,16 +19,8 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_1bvp3")
 
-[sub_resource type="TileSet" id="TileSet_0xm2m"]
-tile_size = Vector2i(32, 32)
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
-
-[node name="Cursor" type="TileMapLayer" parent="."]
-unique_name_in_owner = true
-modulate = Color(0, 1, 1, 0.501961)
-tile_set = SubResource("TileSet_lquwl")
 
 [node name="Grid" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
@@ -33,3 +28,8 @@ tile_set = SubResource("TileSet_0xm2m")
 
 [node name="Circuit" parent="." instance=ExtResource("2_0xm2m")]
 unique_name_in_owner = true
+
+[node name="Cursor" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 1, 1, 0.501961)
+tile_set = SubResource("TileSet_lquwl")

@@ -10,7 +10,7 @@ func click_at(coords : Vector2i) -> void:
 	print(coords);
 	for c in _components:
 		if c.get_position() == coords:
-			c._clicked();
+			c.clicked();
 
 
 
@@ -21,7 +21,7 @@ func place_component(component : Component):
 	_components.push_back(component);
 	component.output.connect(_on_component_output);
 	component.tile_updated.connect(_on_component_tile_updated);
-	component._placed();
+	component.placed();
 	_coord_to_components[component.get_position()] = component;
 
 
@@ -29,7 +29,7 @@ func place_component(component : Component):
 func remove_component_at(coord : Vector2i):
 	if _coord_to_components.has(coord):
 		var component = _coord_to_components[coord];
-		component._removed();
+		component.removed();
 		_components.erase(component);
 		_coord_to_components.erase(coord);
 	
@@ -56,11 +56,11 @@ func _tick() -> void:
 	for c in _components:
 		var default : Array[Vector2i] = [];
 		var input = _input.get(c.get_position(), default);
-		c._tick_input(input);
+		c.tick_input(input);
 	
 	for c in _components:
-		c._tick_process();
+		c.tick_process();
 		
 	_ouputs = {};
 	for c in _components:
-		c._tick_output();
+		c.tick_output();

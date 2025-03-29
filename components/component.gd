@@ -15,38 +15,39 @@ func _init(position : Vector2i, rotation : int) -> void:
 
 
 
-func _placed() -> void:
+func placed() -> void:
 	pass;
 
 
 
-func _removed() -> void:
+func removed() -> void:
 	tile_updated.emit(_position, -1, Vector2i(-1,-1));
 
 
 
-func _clicked() -> void:
+func clicked() -> void:
 	pass;
 
 
 
-func _tick_input(input : Array[Vector2i]) -> void:
+func tick_input(input : Array[Vector2i]) -> void:
 	pass;
 
 
 
-func _tick_process() -> void:
+func tick_process() -> void:
 	pass;
 
 
 
-func _tick_output() -> void:
+func tick_output() -> void:
 	pass;
 
 
 
 func get_position() -> Vector2i:
 	return _position;
+
 
 
 func get_forward() -> Vector2i:

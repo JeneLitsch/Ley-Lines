@@ -1,27 +1,27 @@
 extends Component;
 
 var _input : bool = false;
+var _state : bool = false;
 
-
-func _placed() -> void:
+func placed() -> void:
 	_update_tile();
 
 
 
-func _tick_input(input : Array[Vector2i]) -> void:
+func tick_input(input : Array[Vector2i]) -> void:
 	_input = not input.is_empty();
 
 
 	
-func _tick_process() -> void:
-	if _input:
-		print("on");
-	_update_tile();
+func tick_process() -> void:
+	if _state != _input:
+		_update_tile();
+		_state = _input;
 	_input = false;
 
 
 
-func _tick_output() -> void:
+func tick_output() -> void:
 	pass;
 
 

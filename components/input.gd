@@ -4,22 +4,22 @@ var _active : bool = false;
 
 
 
-func _placed() -> void:
+func placed() -> void:
 	_update_tile();
 
 
 
-func _clicked() -> void:
+func clicked() -> void:
 	_active = !_active;
-
-
-
-func _tick_process() -> void:
 	_update_tile();
 
 
 
-func _tick_output() -> void:
+func tick_process() -> void:
+	pass;
+
+
+func tick_output() -> void:
 	if _active:
 		output.emit(_position, _position - Vector2i(1,0));
 		output.emit(_position, _position + Vector2i(1,0));
