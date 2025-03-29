@@ -10,7 +10,6 @@ script = ExtResource("1_4jjiq")
 
 [node name="Tiles" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = ExtResource("2_4jjiq")
 
 [node name="Tick" type="Timer" parent="."]

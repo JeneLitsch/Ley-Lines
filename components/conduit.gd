@@ -19,11 +19,11 @@ func _tick_process() -> void:
 	
 func _tick_output() -> void:
 	if _input:
-		output.emit(_position, _position + Vector2i(1,0));
+		output.emit(_position, _position + get_forward());
 	_input = false;
 
 
 
 func _update_tile():
-	tile_updated.emit(_position, 0, Vector2i(int(_input), 0));
+	tile_updated.emit(_position, 0, Vector2i(int(_input), _rotation));
 	
