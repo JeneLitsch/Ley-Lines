@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://b612hrr7ajpb4"]
+
+[ext_resource type="Script" uid="uid://bl7qvqum5nix7" path="res://selector.gd" id="1_2m6kw"]
+
+[node name="Selector" type="CanvasLayer"]
+script = ExtResource("1_2m6kw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tools" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Interact" type="Button" parent="MarginContainer/VBoxContainer/Tools"]
+layout_mode = 2
+text = "Interact"
+
+[node name="Basic" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Conduit" type="Button" parent="MarginContainer/VBoxContainer/Basic"]
+layout_mode = 2
+text = "Conduit"
+
+[node name="Source" type="Button" parent="MarginContainer/VBoxContainer/Basic"]
+layout_mode = 2
+text = "Source"
+
+[node name="Sink" type="Button" parent="MarginContainer/VBoxContainer/Basic"]
+layout_mode = 2
+text = "Sink"
+
+[node name="Splitter" type="Button" parent="MarginContainer/VBoxContainer/Basic"]
+layout_mode = 2
+text = "Splitter"
+
+[node name="LogicGates" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="And" type="Button" parent="MarginContainer/VBoxContainer/LogicGates"]
+layout_mode = 2
+text = "And"
+
+[node name="Or" type="Button" parent="MarginContainer/VBoxContainer/LogicGates"]
+layout_mode = 2
+text = "Or"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Tools/Interact" to="." method="_on_interact_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Conduit" to="." method="_on_conduit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Source" to="." method="_on_source_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Sink" to="." method="_on_sink_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Splitter" to="." method="_on_splitter_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LogicGates/And" to="." method="_on_and_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LogicGates/Or" to="." method="_on_or_pressed"]

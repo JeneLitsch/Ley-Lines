@@ -6,8 +6,6 @@
 [node name="Circuit" type="Node2D"]
 script = ExtResource("1_4jjiq")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Tiles" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 tile_set = ExtResource("2_4jjiq")

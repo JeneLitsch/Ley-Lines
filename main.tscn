@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwwfiqrljphj7"]
+[gd_scene load_steps=8 format=3 uid="uid://dwwfiqrljphj7"]
 
 [ext_resource type="Script" uid="uid://jagjhckhyvf1" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://b171uyg1ud17n" path="res://circuit.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://31dcln13fm4w" path="res://cursor.png" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b612hrr7ajpb4" path="res://selector.tscn" id="4_1bvp3"]
 
 [sub_resource type="TileSet" id="TileSet_0xm2m"]
 tile_size = Vector2i(32, 32)
@@ -22,6 +23,9 @@ sources/0 = SubResource("TileSetAtlasSource_1bvp3")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
 [node name="Grid" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 tile_set = SubResource("TileSet_0xm2m")
@@ -33,3 +37,8 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 modulate = Color(0, 1, 1, 0.501961)
 tile_set = SubResource("TileSet_lquwl")
+
+[node name="Selector" parent="." instance=ExtResource("4_1bvp3")]
+unique_name_in_owner = true
+
+[connection signal="component_selected" from="Selector" to="." method="_on_component_selected"]
