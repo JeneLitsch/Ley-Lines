@@ -8,15 +8,17 @@ const CompSink = preload("res://components/sink.gd");
 const CompSplitter = preload("res://components/splitter.gd");
 const CompSequencer = preload("res://components/sequencer.gd");
 
-const CompLogicAnd = preload("res://components/logic_and.gd");
-const CompLogicOr = preload("res://components/logic_or.gd");
-const CompLogicXor = preload("res://components/logic_xor.gd");
-const CompLogicNot = preload("res://components/logic_not.gd");
+const CompLogicAnd = preload("res://components/logic/logic_and.gd");
+const CompLogicOr = preload("res://components/logic/logic_or.gd");
+const CompLogicXor = preload("res://components/logic/logic_xor.gd");
+const CompLogicNot = preload("res://components/logic/logic_not.gd");
 
 
 
 signal component_selected(component : Script);
 signal simulation_speed_changed(speed : float);
+signal save_requested();
+signal open_requested();
 
 
 func _ready() -> void:
@@ -69,3 +71,11 @@ func _on_slider_value_changed(value: float) -> void:
 	var speed = pow(2, value);
 	%SimulationSpeed/Value.text = "%sx" % speed;
 	simulation_speed_changed.emit(speed);
+
+
+func _on_save_pressed() -> void:
+	save_requested.emit();
+
+
+func _on_open_pressed() -> void:
+	open_requested.emit();

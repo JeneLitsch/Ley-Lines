@@ -22,9 +22,9 @@ func _operation(a : bool, b : bool) -> bool:
 func tick_process() -> void:
 	_result = _operation(_input_a, _input_b);
 	_update_tile();
-	
-	
-	
+
+
+
 func tick_output() -> void:
 	if _result:
 		output.emit(_position, _position + get_forward());

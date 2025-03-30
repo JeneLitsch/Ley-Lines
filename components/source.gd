@@ -1,6 +1,6 @@
 extends Component;
 
-var _active : bool = false;
+var _is_active : bool = false;
 
 
 
@@ -10,7 +10,7 @@ func placed() -> void:
 
 
 func clicked() -> void:
-	_active = !_active;
+	_is_active  = !_is_active;
 	_update_tile();
 
 
@@ -20,7 +20,7 @@ func tick_process() -> void:
 
 
 func tick_output() -> void:
-	if _active:
+	if _is_active:
 		output.emit(_position, _position - Vector2i(1,0));
 		output.emit(_position, _position + Vector2i(1,0));
 		output.emit(_position, _position - Vector2i(0,1));
@@ -29,4 +29,19 @@ func tick_output() -> void:
 
 
 func _update_tile():
-	tile_updated.emit(_position, 1, Vector2i(int(_active), 0));
+	tile_updated.emit(_position, 1, Vector2i(int(_is_active), 0));
+
+
+
+func get_type() -> StringName:
+	return &"source";
+
+
+
+func save_state() -> Variant:
+	return _is_active;
+
+
+func post_load_state(data):
+	_is_active = data;
+	_update_tile();

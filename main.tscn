@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwwfiqrljphj7"]
+[gd_scene load_steps=7 format=3 uid="uid://dwwfiqrljphj7"]
 
 [ext_resource type="Script" uid="uid://jagjhckhyvf1" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b171uyg1ud17n" path="res://circuit.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://31dcln13fm4w" path="res://cursor.png" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b612hrr7ajpb4" path="res://selector.tscn" id="4_1bvp3"]
 
@@ -24,14 +23,11 @@ sources/0 = SubResource("TileSetAtlasSource_1bvp3")
 script = ExtResource("1_0xm2m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+anchor_mode = 0
 
 [node name="Grid" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 tile_set = SubResource("TileSet_0xm2m")
-
-[node name="Circuit" parent="." instance=ExtResource("2_0xm2m")]
-unique_name_in_owner = true
 
 [node name="Cursor" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
@@ -41,5 +37,25 @@ tile_set = SubResource("TileSet_lquwl")
 [node name="Selector" parent="." instance=ExtResource("4_1bvp3")]
 unique_name_in_owner = true
 
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+size = Vector2i(1920, 1080)
+access = 2
+filters = PackedStringArray("*.circuit")
+
+[node name="OpenFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+title = "Open a File"
+size = Vector2i(1920, 1080)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.circuit")
+
 [connection signal="component_selected" from="Selector" to="." method="_on_component_selected"]
+[connection signal="open_requested" from="Selector" to="." method="_on_selector_open_requested"]
+[connection signal="save_requested" from="Selector" to="." method="_on_selector_save_requested"]
 [connection signal="simulation_speed_changed" from="Selector" to="." method="_on_selector_simulation_speed_changed"]
+[connection signal="file_selected" from="SaveFileDialog" to="." method="_on_save_file_dialog_file_selected"]
+[connection signal="file_selected" from="OpenFileDialog" to="." method="_on_open_file_dialog_file_selected"]

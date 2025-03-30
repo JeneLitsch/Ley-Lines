@@ -77,3 +77,30 @@ func get_right() -> Vector2i:
 
 func get_left() -> Vector2i:
 	return rotation_to_direction(_rotation + 3);
+
+
+
+func get_type() -> StringName:
+	return &"";
+
+
+func save_state() -> Variant:
+	return null;
+
+
+
+func post_load_state(data):
+	pass;
+
+
+
+func save() -> Dictionary:
+	return {
+		type      = get_type(),
+		position  = {
+			x = _position.x,
+			y = _position.y,
+		},
+		rotation  = _rotation,
+		state     = save_state(),
+	}

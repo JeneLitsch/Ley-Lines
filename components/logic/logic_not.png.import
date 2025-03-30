@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw37147p2rx25"
-path="res://.godot/imported/logic_xor.png-f1d22506b8466ad37547a6d4c868dc27.ctex"
+uid="uid://c3ido2pqiiomf"
+path="res://.godot/imported/logic_not.png-1a0d6f4a3273e9e6a20bd651b49ef0ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://components/logic_xor.png"
-dest_files=["res://.godot/imported/logic_xor.png-f1d22506b8466ad37547a6d4c868dc27.ctex"]
+source_file="res://components/logic/logic_not.png"
+dest_files=["res://.godot/imported/logic_not.png-1a0d6f4a3273e9e6a20bd651b49ef0ee.ctex"]
 
 [params]
 

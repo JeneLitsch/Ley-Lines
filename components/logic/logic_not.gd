@@ -1,6 +1,7 @@
 extends Component;
 
 var _input : bool;
+var _state : bool;
 
 func placed() -> void:
 	_update_tile();
@@ -14,6 +15,7 @@ func tick_input(input : Array[Vector2i]) -> void:
 	
 func tick_process() -> void:
 	_update_tile();
+	_state = _input;
 	
 	
 	
@@ -27,3 +29,8 @@ func tick_output() -> void:
 func _update_tile():
 	tile_updated.emit(_position, 7, Vector2i(int(_input), _rotation));
 	
+
+
+
+func get_type() -> StringName:
+	return &"logic_not";
