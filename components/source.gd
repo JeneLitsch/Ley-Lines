@@ -15,11 +15,7 @@ func clicked() -> void:
 
 
 
-func tick_process() -> void:
-	pass;
-
-
-func tick_output() -> void:
+func tick(_input : Array[Vector2i]) -> void:
 	if _is_active:
 		output.emit(_position, _position - Vector2i(1,0));
 		output.emit(_position, _position + Vector2i(1,0));

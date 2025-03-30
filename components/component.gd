@@ -30,17 +30,7 @@ func clicked() -> void:
 
 
 
-func tick_input(input : Array[Vector2i]) -> void:
-	pass;
-
-
-
-func tick_process() -> void:
-	pass;
-
-
-
-func tick_output() -> void:
+func tick(input : Array[Vector2i]) -> void:
 	pass;
 
 

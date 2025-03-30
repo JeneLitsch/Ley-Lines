@@ -56,17 +56,11 @@ func _on_component_tile_updated(tile_coords : Vector2i, source_id : int, atlas_c
 
 func tick() -> void:
 	var _input = _ouputs;
+	_ouputs = {};
 	for c in _components:
 		var default : Array[Vector2i] = [];
 		var input = _input.get(c.get_position(), default);
-		c.tick_input(input);
-	
-	for c in _components:
-		c.tick_process();
-		
-	_ouputs = {};
-	for c in _components:
-		c.tick_output();
+		c.tick(input);
 
 
 

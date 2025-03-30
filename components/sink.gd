@@ -8,21 +8,13 @@ func placed() -> void:
 
 
 
-func tick_input(input : Array[Vector2i]) -> void:
+func tick(input : Array[Vector2i]) -> void:
 	_input = not input.is_empty();
-
-
-	
-func tick_process() -> void:
 	if _is_active != _input:
 		_update_tile();
 		_is_active = _input;
 	_input = false;
 
-
-
-func tick_output() -> void:
-	pass;
 
 
 func _update_tile():

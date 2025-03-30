@@ -7,19 +7,11 @@ func placed() -> void:
 	_update_tile();
 
 
-
-func tick_input(input : Array[Vector2i]) -> void:
+	
+func tick(input : Array[Vector2i]) -> void:
 	_input = not input.has(get_backward());
-	
-	
-	
-func tick_process() -> void:
 	_update_tile();
 	_state = _input;
-	
-	
-	
-func tick_output() -> void:
 	if _input:
 		output.emit(_position, _position + get_forward());
 	_input = false;
