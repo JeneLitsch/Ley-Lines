@@ -1,17 +1,6 @@
 extends CanvasLayer
 
-
-
-const CompConduit = preload("res://components/conduit.gd");
-const CompSource = preload("res://components/source.gd");
-const CompSink = preload("res://components/sink.gd");
-const CompSplitter = preload("res://components/splitter.gd");
-const CompSequencer = preload("res://components/sequencer.gd");
-
-const CompLogicAnd = preload("res://components/logic/logic_and.gd");
-const CompLogicOr = preload("res://components/logic/logic_or.gd");
-const CompLogicXor = preload("res://components/logic/logic_xor.gd");
-const CompLogicNot = preload("res://components/logic/logic_not.gd");
+const Comp = preload("res://components/components.gd");
 
 
 
@@ -31,40 +20,43 @@ func _on_interact_pressed() -> void:
 
 
 func _on_conduit_pressed() -> void:
-	component_selected.emit(CompConduit);
+	component_selected.emit(Comp.Conduit);
 
 
 func _on_source_pressed() -> void:
-	component_selected.emit(CompSource);
+	component_selected.emit(Comp.Source);
 
 
 func _on_sink_pressed() -> void:
-	component_selected.emit(CompSink);
+	component_selected.emit(Comp.Sink);
 
 
 func _on_splitter_pressed() -> void:
-	component_selected.emit(CompSplitter);
+	component_selected.emit(Comp.Splitter);
 
 
 func _on_and_pressed() -> void:
-	component_selected.emit(CompLogicAnd);
+	component_selected.emit(Comp.LogicAnd);
 
 
 func _on_or_pressed() -> void:
-	component_selected.emit(CompLogicOr);
+	component_selected.emit(Comp.LogicOr);
 
 
 func _on_xor_pressed() -> void:
-	component_selected.emit(CompLogicXor);
+	component_selected.emit(Comp.LogicXor);
 
 
 func _on_not_pressed() -> void:
-	component_selected.emit(CompLogicNot);
+	component_selected.emit(Comp.LogicNot);
 
 
 func _on_sequencer_pressed() -> void:
-	component_selected.emit(CompSequencer);
+	component_selected.emit(Comp.Sequencer);
 
+
+func _on_cross_pressed() -> void:
+	component_selected.emit(Comp.Cross);
 
 
 func _on_slider_value_changed(value: float) -> void:
