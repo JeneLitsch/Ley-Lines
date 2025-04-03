@@ -5,7 +5,7 @@ const Comp = preload("res://components/components.gd")
 
 var _components: Array[Component] = [];
 var _coord_to_components: Dictionary[Vector2i, Component] = {};
-var _ouputs: Dictionary[Vector2i, Array] = {};
+var _transfers: Dictionary[Vector2i, Array] = {};
 
 
 
@@ -46,7 +46,7 @@ func has_component_at(coord : Vector2i):
 func _on_component_output(from : Vector2i, to : Vector2i):
 	var default : Array[Vector2i] = [];
 	print(from, to, from - to);
-	_ouputs.get_or_add(to, default).push_back(from - to);
+	_transfers.get_or_add(to, default).push_back(from - to);
 
 
 
@@ -56,8 +56,8 @@ func _on_component_tile_updated(tile_coords : Vector2i, source_id : int, atlas_c
 
 
 func tick() -> void:
-	var _input = _ouputs;
-	_ouputs = {};
+	var _input = _transfers;
+	_transfers = {};
 	for c in _components:
 		var default : Array[Vector2i] = [];
 		var input = _input.get(c.get_position(), default);
@@ -78,8 +78,9 @@ static func load(data : Variant) -> Circuit:
 		for dd in td.directions:
 			var dir = Vector2i(dd.x, dd.y);
 			directions.push_back(dir);  
-		circuit._ouputs[to] = directions;
+		circuit._transfers[to] = directions;
 	return circuit;
+
 
 
 func save() -> Dictionary:
@@ -87,7 +88,7 @@ func save() -> Dictionary:
 	for component in _components:
 		components_data.push_back(component.save());
 	var transfers_data = [];
-	for to in _ouputs.keys():
+	for to in _transfers.keys():
 		var elem = {
 			to = {
 				x = to.x,
@@ -95,7 +96,7 @@ func save() -> Dictionary:
 			},
 			directions = []
 		};
-		for direction in _ouputs[to]:
+		for direction in _transfers[to]:
 			elem.directions.push_back({
 				x = direction.x,
 				y = direction.y,

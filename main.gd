@@ -29,30 +29,30 @@ func _physics_process(delta: float) -> void:
 
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("toggle_selector"):
-		%Selector.visible = not %Selector.visible;
-
-
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var mouse_position = get_global_mouse_position();
 		var coords = %Grid.local_to_map(mouse_position);
 		_place_position = coords;
 		_update_cursor();
-		
-	if event.is_action_pressed("primary_click"):
-		if _selected_component and not %Selector.visible:
+	
+	if event.is_action_pressed("toggle_selector"):
+		%Selector.visible = not %Selector.visible;
+	
+	if event.is_action_pressed("primary_click") and not %Selector.visible:
+		if _selected_component:
 			_circuit.place_component(_selected_component.new(_place_position, _place_rotation));
 		else:
 			_circuit.click_at(_place_position);
 			
-	if event.is_action_pressed("secondary_click"):
+	if event.is_action_pressed("secondary_click") and not %Selector.visible:
 		var mouse_position = get_global_mouse_position();
 		var coords = %Grid.local_to_map(mouse_position);
 		_circuit.remove_component_at(coords);
-	
+		
+	if event.is_action_pressed("ui_cancel"):
+		%Selector.visible = false;
+		
 	if event.is_action_pressed("rotate_l"):
 		_place_rotation = (_place_rotation + 3) % 4;
 		_update_cursor();
@@ -62,12 +62,16 @@ func _input(event: InputEvent) -> void:
 		_update_cursor();
 
 
+
 func _on_component_selected(component: Script) -> void:
 	_selected_component = component
+	%Selector.visible = false;
+
 
 
 func _on_selector_simulation_speed_changed(speed: float) -> void:
 	_simulation_speed = speed;
+
 
 
 func _on_selector_open_requested() -> void:
@@ -78,8 +82,11 @@ func _on_selector_open_requested() -> void:
 func _on_selector_save_requested() -> void:
 	%SaveFileDialog.visible = true;
 
+
+
 func _on_selector_new_requested() -> void:
 	%NewConfirmationDialog.visible = true;
+
 
 
 func _on_open_file_dialog_file_selected(path: String) -> void:
@@ -97,8 +104,6 @@ func _on_save_file_dialog_file_selected(path: String) -> void:
 	var data = _circuit.save();
 	var file = FileAccess.open(path, FileAccess.WRITE);
 	file.store_string(JSON.stringify(data, "\t"));
-
-
 
 
 
