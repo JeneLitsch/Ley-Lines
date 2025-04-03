@@ -52,9 +52,9 @@ text = "Save"
 layout_mode = 2
 text = "Open"
 
-[node name="Open2" type="Button" parent="MarginContainer/VBoxContainer/File"]
+[node name="New" type="Button" parent="MarginContainer/VBoxContainer/File"]
 layout_mode = 2
-text = "Open"
+text = "New"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -118,7 +118,7 @@ text = "Not"
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SimulationSpeed/Slider" to="." method="_on_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/File/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/File/Open" to="." method="_on_open_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/File/Open2" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/File/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Misc/Interact" to="." method="_on_interact_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Conduit" to="." method="_on_conduit_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Basic/Source" to="." method="_on_source_pressed"]

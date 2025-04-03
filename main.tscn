@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwwfiqrljphj7"]
+[gd_scene load_steps=8 format=3 uid="uid://dwwfiqrljphj7"]
 
 [ext_resource type="Script" uid="uid://jagjhckhyvf1" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://31dcln13fm4w" path="res://cursor.png" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b612hrr7ajpb4" path="res://selector.tscn" id="4_1bvp3"]
+[ext_resource type="Theme" uid="uid://lenj5cei1ogv" path="res://main.theme" id="4_lquwl"]
 
 [sub_resource type="TileSet" id="TileSet_0xm2m"]
 tile_size = Vector2i(32, 32)
@@ -40,6 +41,7 @@ unique_name_in_owner = true
 [node name="SaveFileDialog" type="FileDialog" parent="."]
 unique_name_in_owner = true
 size = Vector2i(1920, 1080)
+borderless = true
 access = 2
 filters = PackedStringArray("*.circuit")
 
@@ -48,14 +50,27 @@ unique_name_in_owner = true
 auto_translate_mode = 1
 title = "Open a File"
 size = Vector2i(1920, 1080)
+borderless = true
 ok_button_text = "Open"
 file_mode = 0
 access = 2
 filters = PackedStringArray("*.circuit")
 
+[node name="NewConfirmationDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+position = Vector2i(480, 270)
+size = Vector2i(960, 540)
+unresizable = true
+borderless = true
+theme = ExtResource("4_lquwl")
+dialog_text = "Are you sure you want to create a new circuit?
+Any unsaved changes are lost!"
+
 [connection signal="component_selected" from="Selector" to="." method="_on_component_selected"]
+[connection signal="new_requested" from="Selector" to="." method="_on_selector_new_requested"]
 [connection signal="open_requested" from="Selector" to="." method="_on_selector_open_requested"]
 [connection signal="save_requested" from="Selector" to="." method="_on_selector_save_requested"]
 [connection signal="simulation_speed_changed" from="Selector" to="." method="_on_selector_simulation_speed_changed"]
 [connection signal="file_selected" from="SaveFileDialog" to="." method="_on_save_file_dialog_file_selected"]
 [connection signal="file_selected" from="OpenFileDialog" to="." method="_on_open_file_dialog_file_selected"]
+[connection signal="confirmed" from="NewConfirmationDialog" to="." method="_on_new_confirmation_dialog_confirmed"]

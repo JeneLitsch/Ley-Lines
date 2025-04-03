@@ -22,4 +22,4 @@ func _update_tile(is_active : bool):
 
 
 func get_type() -> StringName:
-	return &"conduit";
+	return &"cross";

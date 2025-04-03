@@ -45,6 +45,7 @@ func has_component_at(coord : Vector2i):
 
 func _on_component_output(from : Vector2i, to : Vector2i):
 	var default : Array[Vector2i] = [];
+	print(from, to, from - to);
 	_ouputs.get_or_add(to, default).push_back(from - to);
 
 
@@ -94,7 +95,7 @@ func save() -> Dictionary:
 			},
 			directions = []
 		};
-		for direction in _ouputs.keys():
+		for direction in _ouputs[to]:
 			elem.directions.push_back({
 				x = direction.x,
 				y = direction.y,

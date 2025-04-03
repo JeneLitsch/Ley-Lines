@@ -77,6 +77,8 @@ func _on_selector_open_requested() -> void:
 func _on_selector_save_requested() -> void:
 	%SaveFileDialog.visible = true;
 
+func _on_selector_new_requested() -> void:
+	%NewConfirmationDialog.visible = true;
 
 
 func _on_open_file_dialog_file_selected(path: String) -> void:
@@ -94,3 +96,14 @@ func _on_save_file_dialog_file_selected(path: String) -> void:
 	var data = _circuit.save();
 	var file = FileAccess.open(path, FileAccess.WRITE);
 	file.store_string(JSON.stringify(data, "\t"));
+
+
+
+
+
+func _on_new_confirmation_dialog_confirmed() -> void:
+	remove_child(_circuit);
+	_circuit.queue_free();
+	_circuit = preload("res://circuit.tscn").instantiate();
+	_time_accumulator = 0.0;
+	add_child(_circuit);
