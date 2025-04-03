@@ -37,6 +37,7 @@ tile_set = SubResource("TileSet_lquwl")
 
 [node name="Selector" parent="." instance=ExtResource("4_1bvp3")]
 unique_name_in_owner = true
+visible = false
 
 [node name="SaveFileDialog" type="FileDialog" parent="."]
 unique_name_in_owner = true

@@ -30,7 +30,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	%Selector.visible = Input.is_action_pressed("open_selector");
+	if Input.is_action_just_pressed("toggle_selector"):
+		%Selector.visible = not %Selector.visible;
 
 
 
